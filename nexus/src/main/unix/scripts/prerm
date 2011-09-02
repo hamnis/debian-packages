@@ -1,0 +1,23 @@
+#!/bin/sh -e
+
+case "$1" in
+remove)
+   service nexus stop
+    ;;
+
+upgrade)
+    ;;
+
+purge)    
+    ;;
+
+failed-upgrade|abort-install|abort-upgrade|disappear)
+    ;;
+
+*)
+    echo "postrm called with unknown argument '$1'" >&2
+    exit 1
+    ;;
+esac
+
+#DEBHELPER#

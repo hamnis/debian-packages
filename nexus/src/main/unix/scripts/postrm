@@ -1,0 +1,35 @@
+#!/bin/sh -e
+
+remove_symlinks() {
+  rm -f /etc/nexus/plexus.xml
+  rm -f /etc/nexus/plexus.properties
+  rm -f /etc/nexus/classworlds.conf
+  rm -f /etc/nexus/jetty.xml
+}
+
+case "$1" in
+remove)
+   update-rc.d nexus remove
+   deluser nexus 2>/dev/null
+   remove_symlinks
+   exit 0
+    ;;
+
+upgrade)
+    ;;
+
+purge)
+    rm -rf /etc/nexus/
+    rm -f /etc/init.d/nexus
+    ;;
+
+failed-upgrade|abort-install|abort-upgrade|disappear)
+    ;;
+
+*)
+    echo "postrm called with unknown argument '$1'" >&2
+    exit 1
+    ;;
+esac
+
+#DEBHELPER#

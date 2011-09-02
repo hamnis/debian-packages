@@ -1,0 +1,11 @@
+# Select the architecture
+ARCH="linux-x86-64"
+
+# If specified, nexus will be run as the specified user.
+# IMPORTANT - Make sure that the user has the required privileges to write
+#  the PID file and wrapper.log files.  Failure to be able to write the log
+#  file will cause the Wrapper to exit without any way to write out an error
+#  message.
+
+RUN_AS_USER=nexus
+RUN_AS_GROUP=nexus
